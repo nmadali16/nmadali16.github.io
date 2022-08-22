@@ -2,12 +2,27 @@
 <html lang="fr-FR">
 
 <head>
-	
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 		<title>Overview of Machine Learning</title>
 <meta name="robots" content="max-image-preview:large">
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$','$'],['\\(','\\)']], 
+    processEscapes: true
+  },
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore|editor-rich-text'
+  }
+};
+
+</script>
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//s.w.org">
 <link rel="alternate" type="application/rss+xml" title=" &raquo; Flux" href="./../../../../feed/index.html">
@@ -29,8 +44,7 @@ img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }</style>
-	<link rel="stylesheet" id="wp-quicklatex-format-css" href="./../../../../wp-content/plugins/wp-quicklatex/css/quicklatex-format.css?ver=6.0.1" type="text/css" media="all">
-<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=6.0.1" type="text/css" media="all">
+	<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=6.0.1" type="text/css" media="all">
 <style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--neve-link-color: var(--nv-primary-accent);--wp--preset--color--neve-link-hover-color: var(--nv-secondary-accent);--wp--preset--color--nv-site-bg: var(--nv-site-bg);--wp--preset--color--nv-light-bg: var(--nv-light-bg);--wp--preset--color--nv-dark-bg: var(--nv-dark-bg);--wp--preset--color--neve-text-color: var(--nv-text-color);--wp--preset--color--nv-text-dark-bg: var(--nv-text-dark-bg);--wp--preset--color--nv-c-1: var(--nv-c-1);--wp--preset--color--nv-c-2: var(--nv-c-2);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
 <link rel="stylesheet" id="contact-form-7-css" href="./../../../../wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.6.2" type="text/css" media="all">
 <link rel="stylesheet" id="raratheme-companion-css" href="./../../../../wp-content/plugins/raratheme-companion/public/css/raratheme-companion-public.min.css?ver=1.4.0" type="text/css" media="all">
@@ -56,7 +70,6 @@ img.emoji {
 <link rel="stylesheet" id="neve-google-font-poppins-css" href="//fonts.googleapis.com/css?family=Poppins%3A400%2C800%2C500&#038;display=swap&#038;ver=3.3.6" type="text/css" media="all">
 <script type="text/javascript" src="./../../../../wp-includes/js/jquery/jquery.min.js?ver=3.6.0" id="jquery-core-js"></script>
 <script type="text/javascript" src="./../../../../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2" id="jquery-migrate-js"></script>
-<script type="text/javascript" src="./../../../../wp-content/plugins/wp-quicklatex/js/wp-quicklatex-frontend.js?ver=1.0" id="wp-quicklatex-frontend-js"></script>
 <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
 <link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/163/index.html">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
@@ -198,7 +211,7 @@ img.emoji {
 <div class="container"><div class="nv-title-meta-wrap nv-is-boxed">
 <h1 class="title entry-title">Overview of Machine Learning</h1>
 <ul class="nv-meta-list"><li class="meta date posted-on ">
-<time class="entry-date published" datetime="2022-08-21T18:16:02+02:00" content="2022-08-21">21 août 2022</time><time class="updated" datetime="2022-08-22T10:50:51+02:00">22 août 2022</time>
+<time class="entry-date published" datetime="2022-08-21T18:16:02+02:00" content="2022-08-21">21 août 2022</time><time class="updated" datetime="2022-08-22T11:34:20+02:00">22 août 2022</time>
 </li></ul>
 </div></div>
 </div>
@@ -305,21 +318,23 @@ img.emoji {
 
 
 
-<p>We usually use a D-dimensional vector <img src="./../../../../wp-content/ql-cache/quicklatex.com-560ba5b1c28fa7c273341f27e98473a7_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#120;&#32;&#61;&#32;&#91;&#120;&#95;&#49;&#44;&#32;&#120;&#95;&#50;&#44;&#8230;&#44;&#32;&#120;&#95;&#68;&#93;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="20" width="159" style="vertical-align: -5px;"> composed of all the features of a mango, called a feature vector, where each dimension represents a feature. The label of mango is usually represented by a scalar y.</p>
+<p>We usually use a D-dimensional vector $x = [x_1, x_2,…, x_D]^T$ composed of all the features of a mango, called a feature vector, where each dimension represents a feature. The label of mango is usually represented by a scalar y.</p>
 
 
 
-<p>Suppose the training set D consists of N samples, each of which is Identically and Independently Distributed (IID), that is, independently drawn from the same data distribution, denoted as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 23px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d8bafdf855c31ae71d5e6413a7541ea6_l3.png" height="23" width="331" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#68;&#61;&#92;&#108;&#101;&#102;&#116;&#32;&#123;&#32;&#40;&#120;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#49;&#41;&#125;&#41;&#32;&#44;&#40;&#120;&#94;&#123;&#40;&#50;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#50;&#41;&#125;&#41;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#40;&#120;&#94;&#123;&#40;&#78;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#78;&#41;&#125;&#41;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#125;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>Suppose the training set D consists of N samples, each of which is Identically and Independently Distributed (IID), that is, independently drawn from the same data distribution, denoted as</p>
 
 
 
-<p>Given the training set D, we want to let the computer automatically find an optimal function from a set of functions <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3d26e17f6a3abf2ea8084a67aa7594e5_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;&#61;&#92;&#108;&#101;&#102;&#116;&#32;&#123;&#32;&#102;&#95;&#49;&#40;&#120;&#41;&#44;&#102;&#95;&#50;&#40;&#120;&#41;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="156" style="vertical-align: -5px;"> to approximate the true mapping relationship between the feature vector x and the label y denoted <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-73929a70676a272c495251e0bb07498b_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#102;&#125;&#94;&#42;&#60;&#101;&#109;&#62;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="112" style="vertical-align: -5px;">, For a sample x, we can use the function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-c034dcf83604bb34b26b51a565d9366e_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#102;&#125;&#94;&#60;&#47;&#101;&#109;&#62;&#42;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="110" style="vertical-align: -5px;"> to predict the value of its label,</p>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>D=\{ (x^{(1)},y^{(1)}) ,(x^{(2)},y^{(2)}),...,(x^{(N)},y^{(N)})\}</pre></div>
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 19px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-e9730c435305f3f2a4a4fbe2006cacc4_l3.png" height="19" width="75" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#104;&#97;&#116;&#123;&#121;&#125;&#61;&#123;&#102;&#125;&#94;&#42;&#40;&#120;&#41;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>Given the training set D, we want to let the computer automatically find an optimal function from a set of functions $\mathcal{F}=\{ f_1(x),f_2(x),&#8230;\}$ to approximate the true mapping relationship between the feature vector x and the label y denoted $f^{*}(x)$<em>, For a sample x, we can use the function $f^{*}(x)$</em> to predict the value of its label,</p>
+
+
+
+<p>$$<br>\hat{y}={f}^*(x)<br>$$</p>
 
 
 
@@ -327,16 +342,15 @@ img.emoji {
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 21px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-19f491ce56f97733beae200219cd802c_l3.png" height="21" width="123" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#104;&#97;&#116;&#123;&#112;&#125;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;&#61;&#123;&#102;&#125;&#95;&#121;&#94;&#42;&#40;&#120;&#41;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>$$<br>\hat{p}(y\mid x)={f}_y^*(x)<br>$$</p>
 
 
 
-<p>How to find this optimal function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-133e627acad1fc7eaf24edafef78d356_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#102;&#125;&#94;&#42;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;"> is the key to machine learning, and it generally needs to be done through Learning Algorithm <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2da3234c3fdae205092efb71f0fb7572_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#65;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;">. In some literature, the learning algorithm is also called Learner. This search process is usually called the learning or training process.</p>
+<p>How to find this optimal function ${f}^*(x)$ is the key to machine learning, and it generally needs to be done through Learning Algorithm $\mathcal{A}$. In some literature, the learning algorithm is also called Learner. This search process is usually called the learning or training process.</p>
 
 
 
-<p>In this way, the next time you buy a mango from the market, you can use the learned function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-133e627acad1fc7eaf24edafef78d356_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#102;&#125;&#94;&#42;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;"> to predict the quality of the mango according to the characteristics of the mango. In order to evaluate the fairness, we still extract a group of mangoes independently and equally distributed as the test set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-9420ef685c87e65e7778165e18d9cc10_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#68;&#125;&#94;&#39;" title="Rendered by QuickLaTeX.com" height="17" width="19" style="vertical-align: 0px;"> and test on all the mangoes in the test set to calculate the accuracy of the prediction results.</p>
+<p>In this way, the next time you buy a mango from the market, you can use the learned function ${f}^*(x)$ to predict the quality of the mango according to the characteristics of the mango. In order to evaluate the fairness, we still extract a group of mangoes independently and equally distributed as the test set ${D}&rsquo;$ and test on all the mangoes in the test set to calculate the accuracy of the prediction results.</p>
 
 
 
@@ -344,15 +358,15 @@ img.emoji {
 
 
 
-<p>Where I(.) is the indicator function, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-4b7208fc4b94ead85b4efb1bff1573c2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#124;&#32;&#123;&#68;&#125;&#39;&#32;&#124;" title="Rendered by QuickLaTeX.com" height="19" width="26" style="vertical-align: -5px;"> is the size of the test set.</p>
+<p>Where I(.) is the indicator function, and $ | {D}&rsquo; |$ is the size of the test set.</p>
 
 
 
-<p>Figure 1 shows the basic process of machine learning. For a prediction task, the input feature vector is x, and the output label is y. We choose a function set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ba3bbe3340dcd7f2c70d002a34e40322_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> , and learn the function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-52e7b2f5cb58059a99f1d8ccee432a68_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#94;&#123;&#42;&#125;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;"><em> from <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ba3bbe3340dcd7f2c70d002a34e40322_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> through the learning algorithm <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2da3234c3fdae205092efb71f0fb7572_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#65;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> and a set of training samples D. In this way, for the new input x, the function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-52e7b2f5cb58059a99f1d8ccee432a68_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#94;&#123;&#42;&#125;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;"></em> can be used to predict.</p>
+<p>Figure 1 shows the basic process of machine learning. For a prediction task, the input feature vector is x, and the output label is y. We choose a function set $\mathcal{F}$ , and learn the function $f^{*}(x)$<em> from $\mathcal{F}$ through the learning algorithm $\mathcal{A}$ and a set of training samples D. In this way, for the new input x, the function $f^{*}(x)$</em> can be used to predict.</p>
 
 
 <div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" src="./../../../../wp-content/uploads/2022/08/Diapositive1.jpg" alt="" class="wp-image-240" width="792" height="266" srcset="./../../../../wp-content/uploads/2022/08/Diapositive1.jpg 789w, ./../../../../wp-content/uploads/2022/08/Diapositive1-300x101.jpg 300w, ./../../../../wp-content/uploads/2022/08/Diapositive1-768x258.jpg 768w" sizes="(max-width: 792px) 100vw, 792px"><figcaption>Figure 1 &#8211; Examples of Machine Learning System</figcaption></figure>
+<figure class="aligncenter size-full is-resized"><img src="./../../../../wp-content/uploads/2022/08/Diapositive1.jpg" alt="" class="wp-image-240" width="792" height="266" srcset="./../../../../wp-content/uploads/2022/08/Diapositive1.jpg 789w, ./../../../../wp-content/uploads/2022/08/Diapositive1-300x101.jpg 300w, ./../../../../wp-content/uploads/2022/08/Diapositive1-768x258.jpg 768w" sizes="(max-width: 792px) 100vw, 792px"><figcaption>Figure 1 &#8211; Examples of Machine Learning System</figcaption></figure>
 </div>
 
 
@@ -372,28 +386,27 @@ img.emoji {
 
 
 
-<p>For a machine learning task, first, determine its input space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-75f97ca2d0d98ce9eb868f148439f5bb_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#88;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="15" style="vertical-align: 0px;"> and output space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-59d476b6b836a16abc57e813644571d2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;">. The main difference between different machine learning tasks lies in the different output spaces. In the binary classification problem <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-db00d648e729c236b13d0cd0672f53f9_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;&#61;&#32;&#92;&#123;&#43;&#49;&#44;&#32;&#45;&#49;&#92;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="107" style="vertical-align: -5px;"> , in the C -classification problem <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-6fd234c67321cea5ef6ae2d175b90d10_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;&#32;&#61;&#32;&#92;&#123;&#49;&#44;&#32;&#50;&#44;&#8230;&#44;&#32;&#67;&#92;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="133" style="vertical-align: -5px;">, and in the regression problem <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-7dd78605432758c8c75ef5c457dec5f7_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;&#32;&#61;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;" title="Rendered by QuickLaTeX.com" height="15" width="50" style="vertical-align: -3px;">.</p>
+<p>For a machine learning task, first, determine its input space $\mathcal{X}$ and output space $\mathcal{Y}$. The main difference between different machine learning tasks lies in the different output spaces. In the binary classification problem $\mathcal{Y}= \{+1, -1\}$ , in the C -classification problem $\mathcal{Y} = \{1, 2,…, C\}$, and in the regression problem $\mathcal{Y} = \mathbb{R}$.</p>
 
 
 
-<p>The input space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-75f97ca2d0d98ce9eb868f148439f5bb_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#88;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="15" style="vertical-align: 0px;"> and the output space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-59d476b6b836a16abc57e813644571d2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;"> form a sample space. For the samples in the sample space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ebf18e7f8a2d071f4891a205c03d5768_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#40;&#120;&#44;&#121;&#41;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#88;&#125;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="112" style="vertical-align: -5px;">, it is assumed that the relationship between x and y can be determined by an unknown true mapping function y = g(x) or the true conditional probability distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d3d6855d971aea6d76d6ca0adf92e056_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> . The goal of machine learning is to find a model that approximates the real mapping function g(x) or the true conditional probability distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d3d6855d971aea6d76d6ca0adf92e056_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;">.</p>
+<p>The input space $\mathcal{X}$ and the output space $\mathcal{Y}$ form a sample space. For the samples in the sample space $(x,y)\in \mathcal{X} \times \mathcal{Y}$, it is assumed that the relationship between x and y can be determined by an unknown true mapping function y = g(x) or the true conditional probability distribution $p_r(y \mid x)$ . The goal of machine learning is to find a model that approximates the real mapping function g(x) or the true conditional probability distribution $p_r(y \mid x)$.</p>
 
 
 
-<p>Since we don’t know the actual mapping function g(x) or the concrete form of the conditional probability distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d3d6855d971aea6d76d6ca0adf92e056_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;">, we can only hypothesize a set of functions <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ba3bbe3340dcd7f2c70d002a34e40322_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> based on experience, called Hypothesis Space, and then observe its characteristics on the training set D, select an ideal hypothesis <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-951cb41af351ffdb20f6b2a03bdb6ac1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#102;&#125;&#94;&#42;&#40;&#120;&#41;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="79" style="vertical-align: -5px;"></p>
+<p>Since we don’t know the actual mapping function g(x) or the concrete form of the conditional probability distribution $p_r(y \mid x)$, we can only hypothesize a set of functions $\mathcal{F}$ based on experience, called Hypothesis Space, and then observe its characteristics on the training set D, select an ideal hypothesis ${f}^*(x) \in \mathcal{F} $</p>
 
 
 
-<p>The hypothesis space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ba3bbe3340dcd7f2c70d002a34e40322_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> is usually a family of parameterized functions.</p>
+<p>The hypothesis space $\mathcal{F}$ is usually a family of parameterized functions.</p>
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 22px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-b2174e5d6482d2b5b52963e315665508_l3.png" height="22" width="160" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;&#61;&#92;&#108;&#101;&#102;&#116;&#32;&#123;&#32;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#92;&#109;&#105;&#100;&#32;&#92;&#116;&#104;&#101;&#116;&#97;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#68;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#125;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>$$\mathcal{F}=\{ f(x;\theta) \mid \theta \in \mathbb{R}^D \}$$</p>
 
 
 
-<p><br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> is a function with a parameter of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-356a08e839ab6974a16448e16e56745d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="9" style="vertical-align: 0px;">, also called a model, and D is the number of parameters.</p>
+<p><br>Where $f(x;\theta) $ is a function with a parameter of $\theta$, also called a model, and D is the number of parameters.</p>
 
 
 
@@ -407,12 +420,11 @@ img.emoji {
 
 
 
-<p>The hypothesis space of the linear model is a family of parameterized linear functions, namely<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 22px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-be35162b7f70e2b9ab7592a490d43b32_l3.png" height="22" width="138" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#61;&#119;&#94;&#84;&#120;&#43;&#98;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>The hypothesis space of the linear model is a family of parameterized linear functions, namely<br>$$f(x;\theta)=w^Tx+b$$</p>
 
 
 
-<p>The parameter <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-356a08e839ab6974a16448e16e56745d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="9" style="vertical-align: 0px;"> includes the weight vector w and the bias b.</p>
+<p>The parameter $\theta$ includes the weight vector w and the bias b.</p>
 
 
 
@@ -422,22 +434,19 @@ img.emoji {
 
 
 
-<p>A generalized nonlinear model can be written as a linear combination of multiple nonlinear basis functions <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-297ad55564e86009c790a69b7a55cea1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#112;&#104;&#105;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="34" style="vertical-align: -5px;"> :</p>
+<p>A generalized nonlinear model can be written as a linear combination of multiple nonlinear basis functions $\phi(x)$ :</p>
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 22px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2ed5d14e16cadcb2e85783f41d51353c_l3.png" height="22" width="162" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#61;&#119;&#94;&#84;&#92;&#112;&#104;&#105;&#40;&#120;&#41;&#43;&#98;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
-<br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-5fa85822e7c9d507122719116652f84e_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#112;&#104;&#105;&#40;&#120;&#41;&#61;&#92;&#108;&#101;&#102;&#116;&#32;&#91;&#92;&#112;&#104;&#105;&#95;&#49;&#40;&#120;&#41;&#44;&#92;&#112;&#104;&#105;&#95;&#50;&#40;&#120;&#41;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#92;&#112;&#104;&#105;&#95;&#75;&#40;&#120;&#41;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#93;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="22" width="257" style="vertical-align: -5px;"> is a vector composed of K nonlinear basis functions, and the parameter <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-356a08e839ab6974a16448e16e56745d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="9" style="vertical-align: 0px;"> contains the weight vector w and the bias b.
+<p>$$f(x;\theta)=w^T\phi(x)+b$$<br>Where $\phi(x)=[\phi_1(x),\phi_2(x),...,\phi_K(x) ]^T$ is a vector composed of K nonlinear basis functions, and the parameter $\theta$ contains the weight vector w and the bias b.</p>
 
 
 
-<p>If <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-297ad55564e86009c790a69b7a55cea1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#112;&#104;&#105;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="34" style="vertical-align: -5px;"> itself is a learnable basis function, such as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 22px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a5e65ddb98e79d69972c3b357503e5f1_l3.png" height="22" width="291" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#112;&#104;&#105;&#95;&#107;&#40;&#120;&#41;&#61;&#104;&#40;&#119;&#94;&#84;&#95;&#107;&#32;&#123;&#92;&#112;&#104;&#105;&#125;&#39;&#40;&#120;&#41;&#43;&#98;&#95;&#107;&#41;&#44;&#92;&#102;&#111;&#114;&#97;&#108;&#108;&#32;&#49;&#92;&#108;&#101;&#113;&#32;&#107;&#92;&#108;&#101;&#113;&#32;&#75;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>If $\phi(x)$ itself is a learnable basis function, such as<br>$$\phi_k(x)=h(w^T_k {\phi}'(x)+b_k),\forall 1\leq k\leq K$$</p>
 
 
 
-<p>where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-4fb0416e05057725ceb55116c6ccb1a0_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#104;&#40;&#8901;" title="Rendered by QuickLaTeX.com" height="19" width="16" style="vertical-align: -5px;">) is a nonlinear function,<img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-87694d39d8f5089ff977781a8525c212_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#92;&#112;&#104;&#105;&#125;&#39;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="38" style="vertical-align: -5px;"> is another set of basis functions, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-1df460785d846f8cf32198526f5a271e_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#95;&#107;" title="Rendered by QuickLaTeX.com" height="11" width="20" style="vertical-align: -3px;"> and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-80948ed5f8cfe91ebc700ddda20237b7_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#98;&#95;&#107;" title="Rendered by QuickLaTeX.com" height="15" width="15" style="vertical-align: -3px;"> are learnable parameters, then <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> is equivalent to the neural network model.</p>
+<p>where $h(⋅$) is a nonlinear function,${\phi}'(x)$ is another set of basis functions, and $w_k$ and $b_k$ are learnable parameters, then $f(x;\theta)$ is equivalent to the neural network model.</p>
 
 
 
@@ -447,23 +456,23 @@ img.emoji {
 
 
 
-<p>Let the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f3ef0377ae3d9940fbf8b56589857833_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;&#61;&#92;&#123;&#32;&#92;&#108;&#101;&#102;&#116;&#32;&#123;&#32;&#120;&#94;&#123;&#40;&#110;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#110;&#41;&#125;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#125;&#95;&#123;&#110;&#61;&#49;&#125;&#94;&#123;&#78;&#125;&#32;&#92;&#125;" title="Rendered by QuickLaTeX.com" height="25" width="152" style="vertical-align: -5px;"> is composed of N Identically and Independently Distributed (IID) samples, that is, each sample <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ebf18e7f8a2d071f4891a205c03d5768_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#40;&#120;&#44;&#121;&#41;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#88;&#125;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="112" style="vertical-align: -5px;"> is independently randomly generated from the joint space of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-75f97ca2d0d98ce9eb868f148439f5bb_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#88;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="15" style="vertical-align: 0px;"> and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-59d476b6b836a16abc57e813644571d2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#89;&#125;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;"> according to an unknown distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;">. Here it is required that the sample distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> must be fixed and will not change over time. If <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> itself is variable, it is impossible to learn from these data.</p>
+<p>Let the training set $\mathcal{D}=\{ \{ x^{(n)},y^{(n)} \}_{n=1}^{N} \}$ is composed of N Identically and Independently Distributed (IID) samples, that is, each sample $(x,y)\in \mathcal{X} \times \mathcal{Y}$ is independently randomly generated from the joint space of $\mathcal{X} $ and $\mathcal{Y} $ according to an unknown distribution $p_r(y\mid x)$. Here it is required that the sample distribution $p_r(y\mid x)$ must be fixed and will not change over time. If $p_r(y\mid x)$ itself is variable, it is impossible to learn from these data.</p>
 
 
 
-<p>A good model <em><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-6105d69d188d8630724b688974b94f08_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#94;&#123;&#42;&#125;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="58" style="vertical-align: -5px;"> should be consistent with the real mapping function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-c9c6c6b0577d5fa84cf20af74af5a1b3_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#61;&#103;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="65" style="vertical-align: -5px;"> in all possible values of (x,y), that is </em></p>
+<p>A good model <em>$f(x;\theta^{*})$ should be consistent with the real mapping function $y=g(x)$ in all possible values of (x,y), that is </em></p>
 
 
 
-<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\left | f(x,{\theta}^*)-y \right | &lt;\epsilon , \qquad \forall (x,y) \in \mathcal{X } \times \mathcal{Y }</pre></div>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>| f(x,{\theta}^*)-y | &lt;\epsilon , \qquad \forall (x,y) \in \mathcal{X } \times \mathcal{Y }</pre></div>
 
 
 
-<p><br>Or consistent with the true conditional probability distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;">, that is</p>
+<p><br>Or consistent with the true conditional probability distribution $p_r(y\mid x)$, that is</p>
 
 
 
-<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\left | f_y(x,{\theta}^*)-p_r(y\mid x) \right | &lt;\epsilon , \qquad \forall (x,y) \in \mathcal{X } \times \mathcal{Y } </pre></div>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>| f_y(x,{\theta}^*)-p_r(y\mid x) | &lt;\epsilon , \qquad \forall (x,y) \in \mathcal{X } \times \mathcal{Y } </pre></div>
 
 
 
@@ -471,13 +480,11 @@ img.emoji {
 
 
 
-<p><em>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-729568734d87ffb0f88cf42b1bc6828a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#112;&#115;&#105;&#108;&#111;&#110;" title="Rendered by QuickLaTeX.com" height="8" width="7" style="vertical-align: 0px;"> is a small positive number, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-74789ec82289469ea24f1bba0404c105_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#95;&#121;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#94;&#123;&#42;&#125;&#41;" title="Rendered by QuickLaTeX.com" height="20" width="64" style="vertical-align: -6px;"> </em>is the probability corresponding to y in the conditional probability distribution predicted by the model.</p>
+<p><em>Among them, $\epsilon$ is a small positive number, and $f_y(x;\theta^{*})$ </em>is the probability corresponding to y in the conditional probability distribution predicted by the model.</p>
 
 
 
-<p>The quality of the model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> can be measured by Expected Risk <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-222ba69cccf68d5ac0567904290ec604_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="37" style="vertical-align: -5px;">, which is defined as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 21px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-05d9d07c4774199d077190b9c37b5ba7_l3.png" height="21" width="262" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#61;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#69;&#125;&#95;&#123;&#40;&#120;&#44;&#121;&#41;&#32;&#92;&#115;&#105;&#109;&#32;&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;&#125;&#92;&#108;&#101;&#102;&#116;&#32;&#91;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#40;&#121;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#93;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
-<br>where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> is the real data distribution, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0503602536026cfa699f7713ce1b2cbc_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#40;&#121;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="94" style="vertical-align: -5px;"> the loss function, used to quantify the difference between the two variables.
+<p>The quality of the model $f(x;\theta)$ can be measured by Expected Risk $\mathcal{R}(\theta)$, which is defined as<br>$$<br>\mathcal{R}(\theta)=\mathbb{E}_{(x,y) \sim p_r(y\mid x)} [ \mathcal{L}(y,f(x;\theta))  ]<br>$$<br>where $p_r(y\mid x)$ is the real data distribution, and $\mathcal{L}(y,f(x;\theta))$ the loss function, used to quantify the difference between the two variables.</p>
 
 
 
@@ -506,18 +513,15 @@ img.emoji {
 
 
 
-<p><strong>Quadratic Loss Function:</strong> The Quadratic Loss Function is often used in the task of predicting that the label y is a real value, defined as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 36px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-73080f38694cdad66f1f082cc76e6474_l3.png" height="36" width="234" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#40;&#121;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#50;&#125;&#40;&#121;&#45;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;&#94;&#50;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
-<br>The square loss function is generally not suitable for classification problems.
+<p><strong>Quadratic Loss Function:</strong> The Quadratic Loss Function is often used in the task of predicting that the label y is a real value, defined as<br>$$<br>\mathcal{L}(y,f(x;\theta))=\frac{1}{2}(y-f(x;\theta))^2<br>$$<br>The square loss function is generally not suitable for classification problems.</p>
 
 
 
-<p><strong>Cross-Entropy Loss Function : </strong>The Cross-Entropy Loss Function is generally used for classification problems. Assuming that the label of the sample <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b61b967ba1c42e89f97affd846b5573_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#32;&#92;&#105;&#110;&#32;&#92;&#123;&#49;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#67;&#92;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="110" style="vertical-align: -5px;"> is a discrete category, the output of the model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-9e0f9bb2d5eb7f7fc996a4b1b66cda46_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#92;&#105;&#110;&#32;&#91;&#48;&#44;&#32;&#49;&#93;&#94;&#67;" title="Rendered by QuickLaTeX.com" height="20" width="120" style="vertical-align: -5px;"> is the conditional probability distribution of the category label, namely</p>
+<p><strong>Cross-Entropy Loss Function : </strong>The Cross-Entropy Loss Function is generally used for classification problems. Assuming that the label of the sample $y \in \{1,...,C\}$ is a discrete category, the output of the model $f(x;\theta) \in [0, 1]^C $ is the conditional probability distribution of the category label, namely</p>
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 19px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-362f9e1c1a3e5224b36a94a12fdadbc1_l3.png" height="19" width="184" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#112;&#40;&#121;&#61;&#99;&#92;&#109;&#105;&#100;&#32;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#32;&#41;&#61;&#102;&#95;&#99;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>$$<br>p(y=c\mid x;\theta )=f_c(x;\theta)<br>$$</p>
 
 
 
@@ -525,48 +529,49 @@ img.emoji {
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 52px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-34d349a75784f6075625d78ce52f2168_l3.png" height="52" width="255" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#102;&#95;&#99;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#92;&#105;&#110;&#32;&#91;&#48;&#44;&#32;&#49;&#93;&#44;&#32;&#92;&#113;&#117;&#97;&#100;&#32;&#92;&#115;&#117;&#109;&#95;&#123;&#99;&#61;&#49;&#125;&#94;&#123;&#67;&#125;&#32;&#102;&#95;&#99;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#61;&#49;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>$$<br>f_c(x;\theta) \in [0, 1], \quad \sum_{c=1}^{C} f_c(x;\theta)=1<br>$$</p>
 
 
 
-<p>We can use a C-dimensional one-hot vector y to represent the sample label. Assuming that the label of the sample is k, then the label vector y only has the value of the k dimension 1, and the values of the other elements are all 0. The label vector y can be regarded as the true conditional probability distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> of the sample label, that is, the c dimension is the true conditional probability of the category k Assuming that the class of the sample is c, then the probability of it belonging to the k class is 1, and the probability of belonging to other classes is 0.</p>
+<p>We can use a C-dimensional one-hot vector y to represent the sample label. Assuming that the label of the sample is k, then the label vector y only has the value of the k dimension 1, and the values of the other elements are all 0. The label vector y can be regarded as the true conditional probability distribution $p_r(y\mid x)$ of the sample label, that is, the c dimension is the true conditional probability of the category k Assuming that the class of the sample is c, then the probability of it belonging to the k class is 1, and the probability of belonging to other classes is 0.</p>
 
 
 
-<p>For two probability distributions, cross-entropy can generally be used to measure their difference. For the true distribution of labels, the cross entropy between y and the model prediction distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> is</p>
+<p>For two probability distributions, cross-entropy can generally be used to measure their difference. For the true distribution of labels, the cross entropy between y and the model prediction distribution $f(x;\theta)$ is</p>
 
 
 
-<p></p>
-<p class="ql-center-displayed-equation" style="line-height: 52px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-70e66ee70d1a562d922ad2df1fb4db5f_l3.png" height="52" width="393" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#40;&#121;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;&#38;&#61;&#45;&#121;&#94;&#84;&#32;&#108;&#111;&#103;&#40;&#102;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#92;&#38;&#32;&#61;&#32;&#45;&#92;&#115;&#117;&#109;&#95;&#123;&#99;&#61;&#49;&#125;&#94;&#123;&#67;&#125;&#121;&#95;&#99;&#32;&#108;&#111;&#103;&#102;&#95;&#99;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\mathcal{L}(y,f(x;\theta))=-y^T log(f;\theta) </pre></div>
 
 
 
-<p>For example, for the three classification problem, the label vector of a sample is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-295cab94eab659f05f00504da70c866a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#32;&#61;&#32;&#91;&#48;&#44;&#32;&#48;&#44;&#32;&#49;&#93;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="20" width="95" style="vertical-align: -5px;">, and the label distribution predicted by the model is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-5718f9b8ae288def4da1bf1b3240a986_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#61;&#32;&#91;&#48;&#46;&#51;&#44;&#32;&#48;&#46;&#51;&#44;&#32;&#48;&#46;&#52;&#93;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="20" width="179" style="vertical-align: -5px;">, then their cross-entropy It is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3425add5aadd52b373a15e19198c9eb8_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#45;&#40;&#48;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#108;&#111;&#103;&#40;&#48;&#46;&#51;&#41;&#32;&#43;&#32;&#48;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#108;&#111;&#103;&#40;&#48;&#46;&#51;&#41;&#32;&#43;&#32;&#49;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#108;&#111;&#103;&#40;&#48;&#46;&#52;&#41;&#41;&#32;&#61;&#32;&#45;&#32;&#108;&#111;&#103;&#40;&#48;&#46;&#52;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="438" style="vertical-align: -5px;">.</p>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>= -\sum_{c=1}^{C}y_c logf_c(x;\theta)</pre></div>
 
 
 
-<p>Because y is a one-hot vector, it can also be written as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 19px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-8ee4a1aa8125fa57d7bbe2f38dd1654f_l3.png" height="19" width="211" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#76;&#125;&#40;&#121;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#41;&#61;&#45;&#108;&#111;&#103;&#102;&#95;&#121;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p>For example, for the three classification problem, the label vector of a sample is $y = [0, 0, 1]^T$, and the label distribution predicted by the model is $f(x;\theta) = [0.3, 0.3, 0.4]^T$, then their cross-entropy It is $-(0 \times log(0.3) + 0 \times log(0.3) + 1 \times log(0.4)) = &#8211; log(0.4)$.</p>
 
 
 
-<p>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-91d0826a1436d7deac57bc9ec4c2da0a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#95;&#121;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="20" width="56" style="vertical-align: -6px;"> can be regarded as the likelihood function of the real category y. Therefore, the cross-entropy loss function is also the negative log-likelihood function.</p>
+<p>Because y is a one-hot vector, it can also be written as<br>$$<br>\mathcal{L}(y,f(x;\theta))=-logf_y(x;\theta)<br>$$</p>
 
 
 
-<p><strong>Hinge loss function :</strong> For the binary classification problem, suppose the value of y is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f0cb50001fe16aeb8db24e9c41a959d6_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#123;&#45;&#49;&#44;&#32;&#43;&#49;&#92;&#125;&#44;&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="164" style="vertical-align: -5px;">. Hinge Loss Function is</p>
+<p>Among them, $f_y(x;\theta)$ can be regarded as the likelihood function of the real category y. Therefore, the cross-entropy loss function is also the negative log-likelihood function.</p>
+
+
+
+<p><strong>Hinge loss function :</strong> For the binary classification problem, suppose the value of y is $\{-1, +1\},f(x;\theta) \in \mathbb{R}$. Hinge Loss Function is</p>
 
 
 
 <div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\mathcal{L}(y,f(x;\theta))=max(0,1-yf(x;\theta)) \
- \overset{\Delta}{=} \left [ 1-yf(x;\theta) \right ]_+
+ \overset{\Delta}{=}  [ 1-yf(x;\theta)  ]_+
 </pre></div>
 
 
 
-<p>where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d4008764fabe6da874ed9d86f397135a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#91;&#120;&#93;&#43;&#61;&#109;&#97;&#120;&#40;&#48;&#44;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="130" style="vertical-align: -5px;"> .</p>
+<p>where $[x]+=max(0,x)$ .</p>
 
 
 
@@ -576,7 +581,7 @@ img.emoji {
 
 
 
-<p><em>A good model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> should have a relatively small expected error, but because the real data distribution and mapping function are not known, the expected risk cannot actually be calculated <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-222ba69cccf68d5ac0567904290ec604_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="37" style="vertical-align: -5px;"> .Given a training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-407bdbb81b44155766ebe5af58d33459_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;&#61;&#32;&#123;&#32;&#123;&#32;&#40;&#32;&#120;&#94;&#123;&#40;&#110;&#41;&#125;&#44;&#32;&#121;&#94;&#123;&#40;&#110;&#41;&#125;&#32;&#125;&#60;&#47;&#101;&#109;&#62;&#123;&#110;&#61;&#49;&#125;&#94;&#123;&#78;&#125;&#32;&#125;" title="Rendered by QuickLaTeX.com" height="21" width="247" style="vertical-align: -5px;">, what we can calculate is Empirical Risk, which is the average loss on the training set:</em></p>
+<p><em>A good model $f(x;\theta)$ should have a relatively small expected error, but because the real data distribution and mapping function are not known, the expected risk cannot actually be calculated $\mathcal{R}(\theta)$ .Given a training set $\mathcal{D}= { { ( x^{(n)}, y^{(n)} }</em>{n=1}^{N} }$, what we can calculate is Empirical Risk, which is the average loss on the training set:</p>
 
 
 
@@ -584,7 +589,7 @@ img.emoji {
 
 
 
-<p>Therefore, a practical learning criterion is to find a set of parameters <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-b628544a10a8ec11929fe97f98d1c2f9_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;&#94;&#42;" title="Rendered by QuickLaTeX.com" height="12" width="15" style="vertical-align: 0px;"> to minimize the empirical risk, namely</p>
+<p>Therefore, a practical learning criterion is to find a set of parameters $\theta^*$ to minimize the empirical risk, namely</p>
 
 
 
@@ -596,7 +601,7 @@ img.emoji {
 
 
 
-<p>According to the law of large numbers, when the training set size <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-9058d9f5bf1ed32b7d4155d5fe8f114c_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#105;&#100;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;&#32;&#92;&#109;&#105;&#100;" title="Rendered by QuickLaTeX.com" height="19" width="30" style="vertical-align: -5px;"> tends to infinity, the empirical risk tends to the expected risk. However, under normal circumstances, we cannot obtain unlimited training samples, and the training samples are often a small subset of the real data or contain a certain amount of noise data, which cannot well reflect the true distribution of all the data. The principle of empirical risk minimization can easily lead to a low error rate of the model on the training set, but a high error rate on the unknown data. This is called overfitting.</p>
+<p>According to the law of large numbers, when the training set size $\mid \mathcal{D} \mid$ tends to infinity, the empirical risk tends to the expected risk. However, under normal circumstances, we cannot obtain unlimited training samples, and the training samples are often a small subset of the real data or contain a certain amount of noise data, which cannot well reflect the true distribution of all the data. The principle of empirical risk minimization can easily lead to a low error rate of the model on the training set, but a high error rate on the unknown data. This is called overfitting.</p>
 
 
 
@@ -618,15 +623,15 @@ img.emoji {
 
 
 
-<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>=argmin_\theta \frac{1}{N}\sum_{n=1}^{N}\mathcal{L}(y^{(n)};f(x^{(n)};\theta))+\frac{1}{2}\lambda \left | \theta \right |</pre></div>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>=argmin_\theta \frac{1}{N}\sum_{n=1}^{N}\mathcal{L}(y^{(n)};f(x^{(n)};\theta))+\frac{1}{2}\lambda  | \theta  |</pre></div>
 
 
 
-<p>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-cf2fadf3258fcc73ae4914b388e0a24f_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#101;&#102;&#116;&#32;&#124;&#32;&#92;&#116;&#104;&#101;&#116;&#97;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#124;" title="Rendered by QuickLaTeX.com" height="19" width="15" style="vertical-align: -5px;"> is the regularization term of the <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-dd583ea6096b89172262dd03722f6731_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#108;&#108;&#95;&#50;" title="Rendered by QuickLaTeX.com" height="15" width="14" style="vertical-align: -3px;"> norm, which is used to reduce the parameter space and avoid overfitting; <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b5c45836864531b8e37025dabadd24a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="10" style="vertical-align: 0px;"> is used to control the intensity of regularization.</p>
+<p>Among them, $ | \theta  |$ is the regularization term of the $\ell_2$ norm, which is used to reduce the parameter space and avoid overfitting; $\lambda$ is used to control the intensity of regularization.</p>
 
 
 
-<p>The regularization term can also use other functions, such as <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-210919b97dd4bb6d660dcbc52ddca90c_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#108;&#108;&#95;&#49;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;"> norm. The introduction of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-210919b97dd4bb6d660dcbc52ddca90c_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#108;&#108;&#95;&#49;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;"> norm usually makes the parameters have a certain sparseness, so it is often used in many algorithms. From the perspective of Bayesian learning, regularization introduces the prior distribution of parameters so that it does not completely depend on the training data.</p>
+<p>The regularization term can also use other functions, such as $\ell_1$ norm. The introduction of $\ell_1$ norm usually makes the parameters have a certain sparseness, so it is often used in many algorithms. From the perspective of Bayesian learning, regularization introduces the prior distribution of parameters so that it does not completely depend on the training data.</p>
 
 
 
@@ -648,11 +653,11 @@ img.emoji {
 
 
 
-<p><br><br>After determining the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;">, the hypothesis space <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ba3bbe3340dcd7f2c70d002a34e40322_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#70;&#125;" title="Rendered by QuickLaTeX.com" height="14" width="15" style="vertical-align: -1px;"> and the learning criteria, how to find the optimal model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f0c7df0765c60b18bb50d249d09e18fb_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#94;&#42;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="58" style="vertical-align: -5px;"> becomes an optimization problem. The training process of machine learning is actually the process of solving optimization problems.</p>
+<p><br><br>After determining the training set $\mathcal{D}$, the hypothesis space $\mathcal{F}$ and the learning criteria, how to find the optimal model $f(x;\theta^*)$ becomes an optimization problem. The training process of machine learning is actually the process of solving optimization problems.</p>
 
 
 
-<p>optimization can be divided into parameter optimization and hyperparameter optimization. The <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-356a08e839ab6974a16448e16e56745d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="9" style="vertical-align: 0px;"> in the model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> is called the parameters of the model, which can be learned through optimization algorithms. In addition to the learnable parameters <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-356a08e839ab6974a16448e16e56745d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="9" style="vertical-align: 0px;">, there is another type of parameter used to define the model structure or optimization strategy. This type of parameter is called Hyper-Parameter.</p>
+<p>optimization can be divided into parameter optimization and hyperparameter optimization. The $\theta$ in the model $f(x;\theta)$ is called the parameters of the model, which can be learned through optimization algorithms. In addition to the learnable parameters $\theta$, there is another type of parameter used to define the model structure or optimization strategy. This type of parameter is called Hyper-Parameter.</p>
 
 
 
@@ -670,7 +675,7 @@ img.emoji {
 
 
 
-<p>In machine learning, the simplest and most commonly used optimization algorithm is the gradient descent method, that is, first initialize the parameter <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-572fb5dfd06a8f906bb7c8cf8f7cded9_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;&#95;&#48;" title="Rendered by QuickLaTeX.com" height="15" width="15" style="vertical-align: -3px;">, and then calculate the minimum value of the risk function on the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;"> according to the following iterative formula:</p>
+<p>In machine learning, the simplest and most commonly used optimization algorithm is the gradient descent method, that is, first initialize the parameter $\theta_0$, and then calculate the minimum value of the risk function on the training set $\mathcal{D}$ according to the following iterative formula:</p>
 
 
 
@@ -682,7 +687,7 @@ img.emoji {
 
 
 
-<p><br>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f054b9bb6b46cd925f65fc3e56f1022c_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#116;&#104;&#101;&#116;&#97;&#95;&#116;" title="Rendered by QuickLaTeX.com" height="15" width="13" style="vertical-align: -3px;"> is the parameter value in the t iteration, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-8f0b6b1a01f8fcc2f95be0364c090397_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#97;&#108;&#112;&#104;&#97;" title="Rendered by QuickLaTeX.com" height="8" width="11" style="vertical-align: 0px;"> is the search step. In machine learning, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-8f0b6b1a01f8fcc2f95be0364c090397_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#97;&#108;&#112;&#104;&#97;" title="Rendered by QuickLaTeX.com" height="8" width="11" style="vertical-align: 0px;"> is generally called Learning Rate.</p>
+<p><br>Among them, $\theta_t$ is the parameter value in the t iteration, and $\alpha$ is the search step. In machine learning, $\alpha$ is generally called Learning Rate.</p>
 
 
 
@@ -696,7 +701,7 @@ img.emoji {
 
 
 
-<p>In the process of gradient descent training, due to overfitting, the parameters that converge on the training sample are not necessarily optimal on the test set. Therefore, in addition to the training set and the test set, a validation set is sometimes used for model selection to test whether the model is optimal on the validation set. In each iteration, test the newly obtained model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-95c53cdfda0101e74a6ecb5bbfd92583_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="50" style="vertical-align: -5px;"> on the validation set and calculate the error rate. If the error rate on the validation set no longer decreases, stop the iteration. This strategy is called Early Stop. If there is no validation set, a small subset of the training set can be divided into the validation set. Figure 3 shows an example of early stopping.</p>
+<p>In the process of gradient descent training, due to overfitting, the parameters that converge on the training sample are not necessarily optimal on the test set. Therefore, in addition to the training set and the test set, a validation set is sometimes used for model selection to test whether the model is optimal on the validation set. In each iteration, test the newly obtained model $f(x;\theta)$ on the validation set and calculate the error rate. If the error rate on the validation set no longer decreases, stop the iteration. This strategy is called Early Stop. If there is no validation set, a small subset of the training set can be divided into the validation set. Figure 3 shows an example of early stopping.</p>
 
 
 <div class="wp-block-image">
@@ -740,7 +745,7 @@ img.emoji {
 
 
 
-<p>In the t iteration, randomly select a subset <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-4c4061398cd595daac94a6e301b270e3_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#83;&#125;&#95;&#116;" title="Rendered by QuickLaTeX.com" height="15" width="16" style="vertical-align: -3px;"> <em>containing K samples, calculate and average the gradient of the loss function of each sample on this subset, and then update the parameters: </em></p>
+<p>In the t iteration, randomly select a subset $\mathcal{S}_t$ <em>containing K samples, calculate and average the gradient of the loss function of each sample on this subset, and then update the parameters: </em></p>
 
 
 
@@ -766,7 +771,7 @@ img.emoji {
 
 
 
-<p>From the perspective of machine learning, the independent variable is the feature vector of the sample <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-92b900bb810cca00b5375d2cc2617473_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#120;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#68;" title="Rendered by QuickLaTeX.com" height="16" width="56" style="vertical-align: -1px;">, and the dependent variable is the label y, where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-6bf3ce337b851cdd572bfe476710df0b_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;" title="Rendered by QuickLaTeX.com" height="16" width="44" style="vertical-align: -4px;"> is a continuous value. Assume that space is a set of parameterized linear functions.</p>
+<p>From the perspective of machine learning, the independent variable is the feature vector of the sample $x \in \mathbb{R}^D$, and the dependent variable is the label y, where $y \in \mathbb{R}$ is a continuous value. Assume that space is a set of parameterized linear functions.</p>
 
 
 
@@ -774,7 +779,7 @@ img.emoji {
 
 
 
-<p><br>The weight vector <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-dbf8eb4369ebeb301e42d92daeb09cc6_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#68;" title="Rendered by QuickLaTeX.com" height="16" width="59" style="vertical-align: -1px;"> and bias <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0b43764ebbf99a018bb3a28ae8a4c8ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#98;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;" title="Rendered by QuickLaTeX.com" height="13" width="42" style="vertical-align: -1px;">  are all learnable parameters, and the function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-4a2ba7b9be50d4df95b51782aea465d4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#87;&#44;&#98;&#41;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;" title="Rendered by QuickLaTeX.com" height="19" width="109" style="vertical-align: -5px;"> is also called a linear model.</p>
+<p><br>The weight vector $w \in \mathbb{R}^D$ and bias $b \in \mathbb{R}$  are all learnable parameters, and the function $f(x;W,b) \in \mathbb{R}$ is also called a linear model.</p>
 
 
 
@@ -786,7 +791,7 @@ img.emoji {
 
 
 
-<p><br>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162fb22c24eb0e8727f12ab6b49e7bbc_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#104;&#97;&#116;&#123;&#119;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="13" style="vertical-align: 0px;"> and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-516d63b88012bc33d5c2749908ca03fe_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#104;&#97;&#116;&#123;&#98;&#125;" title="Rendered by QuickLaTeX.com" height="17" width="8" style="vertical-align: 0px;"> are called augmented weight vector and augmented feature vector respectively:</p>
+<p><br>Among them, $\hat{w}$ and $\hat{b}$ are called augmented weight vector and augmented feature vector respectively:</p>
 
 
 
@@ -814,11 +819,11 @@ b
 
 
 
-<p>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2dd05ae7ff8e9f20d4decb554faeac61_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#111;&#112;&#108;&#117;&#115;" title="Rendered by QuickLaTeX.com" height="13" width="13" style="vertical-align: -2px;"> is defined as the splicing operation of two vectors.</p>
+<p>Where $\oplus$ is defined as the splicing operation of two vectors.</p>
 
 
 
-<p>Without loss of generality, in the description later in this chapter, we adopt a simplified representation method, directly using w and x to represent the augmented weight vector and augmented feature vector, respectively. In this way, the linear regression model is abbreviated as <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0dc318fefe09d333856877f67d2133f7_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#119;&#41;&#61;&#119;&#94;&#84;&#120;" title="Rendered by QuickLaTeX.com" height="20" width="113" style="vertical-align: -5px;"></p>
+<p>Without loss of generality, in the description later in this chapter, we adopt a simplified representation method, directly using w and x to represent the augmented weight vector and augmented feature vector, respectively. In this way, the linear regression model is abbreviated as $f(x;w)=w^Tx$</p>
 
 
 
@@ -828,7 +833,7 @@ b
 
 
 
-<p><br>Given a training set containing N training samples <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-972d22eeec4f1477c037cdc00974b8fe_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#80;&#125;&#61;&#92;&#123;&#92;&#123;&#120;&#94;&#123;&#40;&#110;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#110;&#41;&#125;&#92;&#125;&#92;&#125;&#95;&#123;&#110;&#61;&#49;&#125;&#94;&#123;&#78;&#125;" title="Rendered by QuickLaTeX.com" height="21" width="165" style="vertical-align: -5px;"> , we hope to learn an optimal linear regression model paramete w .</p>
+<p><br>Given a training set containing N training samples $\mathcal{P}=\{\{x^{(n)},y^{(n)}\}\}_{n=1}^{N}$ , we hope to learn an optimal linear regression model paramete w .</p>
 
 
 
@@ -846,7 +851,7 @@ b
 
 
 
-<p>According to the empirical risk minimization criterion, the empirical risk on the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;"> is defined as</p>
+<p>According to the empirical risk minimization criterion, the empirical risk on the training set $\mathcal{D}$ is defined as</p>
 
 
 
@@ -858,16 +863,15 @@ b
 
 
 
-<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\frac{1}{2}\left |y- X^T w \right |^2</pre></div>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>\frac{1}{2} |y- X^T w  |^2</pre></div>
 
 
 
-<p><br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-619700be291a53cfe9d763ea84fd8034_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#32;&#61;&#32;&#91;&#121;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#8230;&#44;&#121;&#94;&#123;&#40;&#78;&#41;&#125;&#93;&#94;&#84;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#78;" title="Rendered by QuickLaTeX.com" height="21" width="200" style="vertical-align: -5px;"> is the column vector composed of the true labels of all samples, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-5f68e9900a54a2448ee6abdebcac676f_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#123;&#40;&#68;&#43;&#49;&#41;&#32;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#78;&#125;" title="Rendered by QuickLaTeX.com" height="17" width="114" style="vertical-align: -1px;"> is the input feature of all samples <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-1503d6455e4248136a7bd6f9e1c0b0f2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#120;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#120;&#94;&#123;&#40;&#78;&#41;&#125;" title="Rendered by QuickLaTeX.com" height="20" width="100" style="vertical-align: -4px;"> The matrix composed of:<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 64px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-c904f702837a80df1c64f7a25414c5ef_l3.png" height="64" width="450" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#88;&#61;&#92;&#98;&#101;&#103;&#105;&#110;&#123;&#98;&#109;&#97;&#116;&#114;&#105;&#120;&#125;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#49;&#41;&#125;&#32;&#38;&#32;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#50;&#41;&#125;&#32;&#38;&#32;&#92;&#104;&#100;&#111;&#116;&#115;&#32;&#38;&#32;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#78;&#41;&#125;&#32;&#92;&#92;&#118;&#100;&#111;&#116;&#115;&#32;&#38;&#32;&#92;&#118;&#100;&#111;&#116;&#115;&#38;&#32;&#92;&#100;&#100;&#111;&#116;&#115;&#32;&#38;&#32;&#92;&#118;&#100;&#111;&#116;&#115;&#92;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#49;&#41;&#125;&#32;&#38;&#32;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#50;&#41;&#125;&#32;&#38;&#32;&#92;&#104;&#100;&#111;&#116;&#115;&#32;&#38;&#32;&#120;&#95;&#123;&#49;&#125;&#94;&#123;&#40;&#78;&#41;&#125;&#32;&#92;&#49;&#38;&#49;&#32;&#38;&#32;&#92;&#104;&#100;&#111;&#116;&#115;&#32;&#38;&#32;&#49;&#92;&#101;&#110;&#100;&#123;&#98;&#109;&#97;&#116;&#114;&#105;&#120;&#125;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
+<p><br>Where $y = [y^{(1)},…,y^{(N)}]^T \in \mathbb{R}^N$ is the column vector composed of the true labels of all samples, and $X \in \mathbb{R}^{(D+1) \times N}$ is the input feature of all samples $x^{(1)},...,x^{(N)}$ The matrix composed of:<br>$$<br>X=\begin{bmatrix}<br>x_{1}^{(1)} &amp; x_{1}^{(2)} &amp; ... &amp; x_{1}^{(N)} \<br>\vdots &amp; \vdots&amp; \ddots &amp; \vdots\<br>x_{1}^{(1)} &amp; x_{1}^{(2)} &amp; ... &amp; x_{1}^{(N)} \<br>1&amp;1 &amp; ... &amp; 1<br>\end{bmatrix}<br>$$</p>
 
 
 
-<p>The hazard function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f8c0ac576f3075d32983389dfb5c909d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#119;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;">is a convex function about w, and its partial derivative with respect to w is</p>
+<p>The hazard function $\mathcal{R}(w)$is a convex function about w, and its partial derivative with respect to w is</p>
 
 
 
@@ -879,7 +883,7 @@ b
 
 
 
-<p><br>Let <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f7b4cdb1e96d85da11dd9b12df38d4a1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#112;&#97;&#114;&#116;&#105;&#97;&#108;&#32;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#119;&#41;&#32;&#125;&#123;&#92;&#112;&#97;&#114;&#116;&#105;&#97;&#108;&#32;&#119;&#125;&#61;&#48;" title="Rendered by QuickLaTeX.com" height="25" width="75" style="vertical-align: -6px;"> get the optimal parameter <em><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-13846d33e47d57469a211edcf26b69b4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#94;&#42;" title="Rendered by QuickLaTeX.com" height="12" width="19" style="vertical-align: 0px;"> as </em></p>
+<p><br>Let $\frac{\partial \mathcal{R}(w) }{\partial w}=0$ get the optimal parameter <em>$w^*$ as </em></p>
 
 
 
@@ -899,11 +903,11 @@ b
 </div>
 
 
-<p>In the least square method, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-074a9717488de759ef16712f1a8cbd9e_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;&#32;&#92;&#105;&#110;&#32;&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#82;&#125;&#94;&#123;&#40;&#68;&#43;&#49;&#41;&#92;&#116;&#105;&#109;&#101;&#115;&#32;&#40;&#68;&#43;&#49;&#41;&#125;" title="Rendered by QuickLaTeX.com" height="17" width="167" style="vertical-align: -1px;"> must have an inverse matrix, that is, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> is full rank (rank (<img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;">)=D+1). In other words, the row vectors in N are linearly uncorrelated, that is, each feature is uncorrelated with other features. A common irreversibility of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> is that the number of samples N is smaller than the number of features (D + 1), and the rank of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-9919090433496ed61e8c8394654e83fa_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#116;" title="Rendered by QuickLaTeX.com" height="15" width="37" style="vertical-align: 0px;"> is N. At this time, there will be many solutions <em><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-13846d33e47d57469a211edcf26b69b4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#94;&#42;" title="Rendered by QuickLaTeX.com" height="12" width="19" style="vertical-align: 0px;">, which can make <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a600dae61c5a85d213d32c5c55dab09f_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#119;&#94;&#42;&#41;&#61;&#48;" title="Rendered by QuickLaTeX.com" height="19" width="82" style="vertical-align: -5px;"> </em>.</p>
+<p>In the least square method, $XX^T \in \mathbb{R}^{(D+1)\times (D+1)}$ must have an inverse matrix, that is, $XX^T$ is full rank (rank ($XX^T$)=D+1). In other words, the row vectors in N are linearly uncorrelated, that is, each feature is uncorrelated with other features. A common irreversibility of $XX^T$ is that the number of samples N is smaller than the number of features (D + 1), and the rank of $XX^t$ is N. At this time, there will be many solutions <em>$w^*$, which can make $\mathcal{R}(w^*)=0$ </em>.</p>
 
 
 
-<p>When <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> is irreversible, the following two methods can be used to estimate the parameters: 1) Use principal component analysis and other methods to preprocess the data to eliminate the correlation between different features, and then use the least square method to estimate the parameters; 2 ) Use the gradient descent method to estimate the parameters. First initialize <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a0e424571a5a350790696d566ebdd3d5_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#61;&#48;" title="Rendered by QuickLaTeX.com" height="12" width="46" style="vertical-align: 0px;">, and then iterate through the following formula:</p>
+<p>When $XX^T$ is irreversible, the following two methods can be used to estimate the parameters: 1) Use principal component analysis and other methods to preprocess the data to eliminate the correlation between different features, and then use the least square method to estimate the parameters; 2 ) Use the gradient descent method to estimate the parameters. First initialize $w=0$, and then iterate through the following formula:</p>
 
 
 
@@ -911,7 +915,7 @@ b
 
 
 
-<p><br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-8f0b6b1a01f8fcc2f95be0364c090397_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#97;&#108;&#112;&#104;&#97;" title="Rendered by QuickLaTeX.com" height="8" width="11" style="vertical-align: 0px;"> is the learning rate. This method of using the gradient descent method to solve is also called the Least Mean Squares (LMS) algorithm.</p>
+<p><br>Where $\alpha$ is the learning rate. This method of using the gradient descent method to solve is also called the Least Mean Squares (LMS) algorithm.</p>
 
 
 
@@ -921,7 +925,7 @@ b
 
 
 
-<p><br>The basic requirement of the least squares method is that each feature must be independent of the others to ensure that <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> is reversible. But even if <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> is reversible, if there is large multicollinearity between the features, it will also make the inverse of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> unable to be accurately calculated numerically. Some small disturbances on the data set X will cause a big change in <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d93e7602579002928c2a402d26d8d2e4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#40;&#88;&#88;&#94;&#84;&#41;&#94;&#123;&#45;&#49;&#125;" title="Rendered by QuickLaTeX.com" height="20" width="73" style="vertical-align: -5px;">, which makes the calculation of the least square method very unstable. In order to solve this problem, [Hoerl et al., 1970] proposed Ridge Regression, which adds a constant to the diagonal elements of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3123b6365958b8ac4e9d18a278bc21ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#88;&#94;&#84;" title="Rendered by QuickLaTeX.com" height="15" width="42" style="vertical-align: 0px;"> so that <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3b245229682f1f9296434ebfd7912ad3_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#40;&#88;&#88;&#94;&#84;&#43;&#92;&#108;&#97;&#109;&#98;&#100;&#97;&#32;&#73;&#41;" title="Rendered by QuickLaTeX.com" height="20" width="96" style="vertical-align: -5px;"> is full rank, that is, its determinant Not 0. The optimal parameter <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-13846d33e47d57469a211edcf26b69b4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#94;&#42;" title="Rendered by QuickLaTeX.com" height="12" width="19" style="vertical-align: 0px;"><em> is </em></p>
+<p><br>The basic requirement of the least squares method is that each feature must be independent of the others to ensure that $XX^T$ is reversible. But even if $XX^T$ is reversible, if there is large multicollinearity between the features, it will also make the inverse of $XX^T$ unable to be accurately calculated numerically. Some small disturbances on the data set X will cause a big change in $(XX^T)^{-1}$, which makes the calculation of the least square method very unstable. In order to solve this problem, [Hoerl et al., 1970] proposed Ridge Regression, which adds a constant to the diagonal elements of $XX^T$ so that $(XX^T+\lambda I)$ is full rank, that is, its determinant Not 0. The optimal parameter $w^*$<em> is </em></p>
 
 
 
@@ -929,13 +933,11 @@ b
 
 
 
-<p>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f203da6c7fff0b1487c2084e3d90966b_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;&#32;&#62;&#32;&#48;" title="Rendered by QuickLaTeX.com" height="14" width="43" style="vertical-align: -2px;"> is the pre-set hyperparameter, and I is the identity matrix.</p>
+<p>Where $\lambda &gt; 0 $ is the pre-set hyperparameter, and I is the identity matrix.</p>
 
 
 
-<p>The solution of ridge regression <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-13846d33e47d57469a211edcf26b69b4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#94;&#42;" title="Rendered by QuickLaTeX.com" height="12" width="19" style="vertical-align: 0px;"> can be regarded as the least square estimation under the structural risk minimization criterion, and its objective function can be written as<br></p>
-<p class="ql-center-displayed-equation" style="line-height: 36px;"><span class="ql-right-eqno"> &nbsp; </span><span class="ql-left-eqno"> &nbsp; </span><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-d08c859715ee75489421db5d6dec5b25_l3.png" height="36" width="249" class="ql-img-displayed-equation quicklatex-auto-format" alt="&#92;&#91;&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#82;&#125;&#40;&#119;&#41;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#50;&#125;&#92;&#108;&#101;&#102;&#116;&#32;&#124;&#32;&#121;&#45;&#88;&#94;&#84;&#119;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#124;&#94;&#50;&#43;&#92;&#102;&#114;&#97;&#99;&#123;&#49;&#125;&#123;&#50;&#125;&#92;&#108;&#97;&#109;&#98;&#100;&#97;&#32;&#92;&#108;&#101;&#102;&#116;&#32;&#124;&#119;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#32;&#124;&#32;&#94;&#50;&#92;&#93;" title="Rendered by QuickLaTeX.com"></p>
-<br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f203da6c7fff0b1487c2084e3d90966b_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;&#32;&#62;&#32;&#48;" title="Rendered by QuickLaTeX.com" height="14" width="43" style="vertical-align: -2px;"> is the regularization coefficient.
+<p>The solution of ridge regression $w^*$ can be regarded as the least square estimation under the structural risk minimization criterion, and its objective function can be written as<br>$$<br>\mathcal{R}(w)=\frac{1}{2} | y-X^Tw  |^2+\frac{1}{2}\lambda  |w  | ^2<br>$$<br>Where $\lambda &gt; 0$ is the regularization coefficient.</p>
 
 
 
@@ -945,11 +947,11 @@ b
 
 
 
-<p>Machine learning tasks can be divided into two categories: one is the unknown functional relationship between the sample feature vector x and the label  y= ℎ(x), and the other is the conditional probability <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-93236510c2256f80b0a2fe8b81bca719_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="57" style="vertical-align: -5px;"> obeys some unknown distributed. The least squares method belongs to the first category and directly models the functional relationship between x and the label y. In addition, linear regression can also estimate parameters from the perspective of modeling conditional probability <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-93236510c2256f80b0a2fe8b81bca719_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="57" style="vertical-align: -5px;">.</p>
+<p>Machine learning tasks can be divided into two categories: one is the unknown functional relationship between the sample feature vector x and the label  y= ℎ(x), and the other is the conditional probability $p(y \mid x)$ obeys some unknown distributed. The least squares method belongs to the first category and directly models the functional relationship between x and the label y. In addition, linear regression can also estimate parameters from the perspective of modeling conditional probability $p(y \mid x)$.</p>
 
 
 
-<p>Suppose the label y is a random variable, and it is determined by the function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0dc318fefe09d333856877f67d2133f7_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#119;&#41;&#61;&#119;&#94;&#84;&#120;" title="Rendered by QuickLaTeX.com" height="20" width="113" style="vertical-align: -5px;"> plus a random noise <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-729568734d87ffb0f88cf42b1bc6828a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#112;&#115;&#105;&#108;&#111;&#110;" title="Rendered by QuickLaTeX.com" height="8" width="7" style="vertical-align: 0px;">, namely</p>
+<p>Suppose the label y is a random variable, and it is determined by the function $f(x;w)=w^Tx$ plus a random noise $\epsilon$, namely</p>
 
 
 
@@ -962,7 +964,7 @@ b
 
 
 
-<p><br>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-729568734d87ffb0f88cf42b1bc6828a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#112;&#115;&#105;&#108;&#111;&#110;" title="Rendered by QuickLaTeX.com" height="8" width="7" style="vertical-align: 0px;"> obeys a Gaussian distribution with a mean of 0 and a variance of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-6a987274197f5fb6bfd3855d351bc2af_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#115;&#105;&#103;&#109;&#97;&#94;&#50;" title="Rendered by QuickLaTeX.com" height="15" width="18" style="vertical-align: 0px;">. In this way, y obeys a Gaussian distribution with mean <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-ffcab382f9036324968b40c732114333_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#119;&#94;&#84;&#120;" title="Rendered by QuickLaTeX.com" height="15" width="34" style="vertical-align: 0px;"> and variance <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-6a987274197f5fb6bfd3855d351bc2af_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#115;&#105;&#103;&#109;&#97;&#94;&#50;" title="Rendered by QuickLaTeX.com" height="15" width="18" style="vertical-align: 0px;">:</p>
+<p><br>Among them, $\epsilon$ obeys a Gaussian distribution with a mean of 0 and a variance of $\sigma^2$. In this way, y obeys a Gaussian distribution with mean $w^Tx$ and variance $\sigma^2$:</p>
 
 
 
@@ -974,7 +976,7 @@ b
 
 
 
-<p><br>The likelihood function (Likelihood) of the parameter w on the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;"> is</p>
+<p><br>The likelihood function (Likelihood) of the parameter w on the training set $ \mathcal{D}$ is</p>
 
 
 
@@ -986,7 +988,7 @@ b
 
 
 
-<p>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2e700378841276aa2350335dda8bd683_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#61;&#91;&#121;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#121;&#94;&#123;&#40;&#78;&#41;&#125;&#93;" title="Rendered by QuickLaTeX.com" height="21" width="141" style="vertical-align: -5px;"> is the vector composed of all sample labels, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0eab5f60e2fb63b5f1e80b94dc4d5fe4_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#88;&#61;&#91;&#120;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#120;&#94;&#123;&#40;&#78;&#41;&#125;&#93;" title="Rendered by QuickLaTeX.com" height="21" width="150" style="vertical-align: -5px;"> is the matrix composed of all sample feature vectors.</p>
+<p>Where $y=[y^{(1)},...,y^{(N)}]$ is the vector composed of all sample labels, $X=[x^{(1)},...,x^{(N)}]$ is the matrix composed of all sample feature vectors.</p>
 
 
 
@@ -998,11 +1000,11 @@ b
 
 
 
-<p>Maximum Likelihood Estimation (MLE) refers to finding a set of parameters w to make the likelihood function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f3b03c1eaa50351ee6fa6fc13a55e727_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#59;&#119;&#44;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="103" style="vertical-align: -5px;"> the largest, which is equivalent to the log likelihood function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-3d6d1c35755f25986d387410225333c2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#108;&#111;&#103;&#32;&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#59;&#119;&#44;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="125" style="vertical-align: -5px;"> max.</p>
+<p>Maximum Likelihood Estimation (MLE) refers to finding a set of parameters w to make the likelihood function $p(y \mid X;w,\sigma)$ the largest, which is equivalent to the log likelihood function $log p(y \mid X;w,\sigma)$ max.</p>
 
 
 
-<p>Let <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-16aa4bac136d6e96c26bb254edb776ae_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#112;&#97;&#114;&#116;&#105;&#97;&#108;&#32;&#108;&#111;&#103;&#32;&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#59;&#119;&#44;&#92;&#115;&#105;&#103;&#109;&#97;&#41;&#125;&#123;&#92;&#112;&#97;&#114;&#116;&#105;&#97;&#108;&#32;&#119;&#125;&#61;&#48;" title="Rendered by QuickLaTeX.com" height="25" width="128" style="vertical-align: -6px;">, get</p>
+<p>Let $\frac{\partial log p(y \mid X;w,\sigma)}{\partial w}=0$, get</p>
 
 
 
@@ -1024,7 +1026,7 @@ b
 
 
 
-<p>Suppose the parameter w is a random vector and obeys a prior distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-db8980d040213648e37d9f23190aa457_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#59;&#118;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="53" style="vertical-align: -5px;">. For simplicity, generally, let <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-db8980d040213648e37d9f23190aa457_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#59;&#118;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="53" style="vertical-align: -5px;"> be an isotropic Gaussian distribution:</p>
+<p>Suppose the parameter w is a random vector and obeys a prior distribution $p(w;v)$. For simplicity, generally, let $p(w;v)$ be an isotropic Gaussian distribution:</p>
 
 
 
@@ -1032,7 +1034,7 @@ b
 
 
 
-<p>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-bf31de35627ca5bd8b1c509d12aa2884_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#118;&#94;&#50;" title="Rendered by QuickLaTeX.com" height="15" width="16" style="vertical-align: 0px;"> is the variance in each dimension.</p>
+<p>Where $v^2$ is the variance in each dimension.</p>
 
 
 
@@ -1048,7 +1050,7 @@ b
 
 
 
-<p><br>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-535a3c63942baa6a741f02927a853986_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#44;&#119;&#59;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="102" style="vertical-align: -5px;"> is the likelihood function of w, and <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-db8980d040213648e37d9f23190aa457_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#59;&#118;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="53" style="vertical-align: -5px;"> is the prior of w.</p>
+<p><br>Where $ p(y \mid X,w;\sigma)$ is the likelihood function of w, and $p(w;v)$ is the prior of w.</p>
 
 
 
@@ -1056,7 +1058,7 @@ b
 
 
 
-<p>Bayesian estimation is an interval estimation of parameters, that is, the distribution of parameters in an interval. If we want to get an optimal parameter value (ie point estimate), we can use the maximum posterior estimate. Maximum A Posteriori Estimation (MAP) means that the optimal parameter is the posterior distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-461d2d964f50f5b9983264be4335f288_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#44;&#121;&#59;&#118;&#44;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="119" style="vertical-align: -5px;"> The parameter with the highest probability density:</p>
+<p>Bayesian estimation is an interval estimation of parameters, that is, the distribution of parameters in an interval. If we want to get an optimal parameter value (ie point estimate), we can use the maximum posterior estimate. Maximum A Posteriori Estimation (MAP) means that the optimal parameter is the posterior distribution $ p(w \mid X,y;v,\sigma)$ The parameter with the highest probability density:</p>
 
 
 
@@ -1064,7 +1066,7 @@ b
 
 
 
-<p>Let the likelihood function <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-535a3c63942baa6a741f02927a853986_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#121;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#44;&#119;&#59;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="102" style="vertical-align: -5px;"> be the Gaussian density function , then the logarithm of the posterior distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-461d2d964f50f5b9983264be4335f288_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#32;&#92;&#109;&#105;&#100;&#32;&#88;&#44;&#121;&#59;&#118;&#44;&#92;&#115;&#105;&#103;&#109;&#97;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="119" style="vertical-align: -5px;"> is</p>
+<p>Let the likelihood function $p(y \mid X,w;\sigma)$ be the Gaussian density function , then the logarithm of the posterior distribution $p(w \mid X,y;v,\sigma)$ is</p>
 
 
 
@@ -1076,15 +1078,15 @@ b
 
 
 
-<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>= -\frac{1}{2 \sigma^2}\left | y-X^Tw \right |^2 -\frac{1}{2v^2}w^Tw</pre></div>
+<div class="wp-block-katex-display-block katex-eq" data-katex-display="true"><pre>= -\frac{1}{2 \sigma^2}| y-X^Tw  |^2 -\frac{1}{2v^2}w^Tw</pre></div>
 
 
 
-<p><br>It can be seen that the maximum posterior probability is equivalent to the structural risk minimization of the square loss, where the regularization coefficient <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-4650fd578199864b28b66877490a4b01_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;&#61;&#92;&#102;&#114;&#97;&#99;&#123;&#92;&#115;&#105;&#103;&#109;&#97;&#94;&#50;&#125;&#123;&#118;&#94;&#50;&#125;" title="Rendered by QuickLaTeX.com" height="26" width="52" style="vertical-align: -7px;">.</p>
+<p><br>It can be seen that the maximum posterior probability is equivalent to the structural risk minimization of the square loss, where the regularization coefficient $\lambda=\frac{\sigma^2}{v^2}$.</p>
 
 
 
-<p>The maximum likelihood estimation and Bayesian estimation can be regarded as different interpretations of the parameters that need to be estimated by the frequency school and the Bayesian school, respectively. When <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-c28c13bdc34fdf112ee911d4ebf95d83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#118;&#32;&#92;&#114;&#105;&#103;&#104;&#116;&#97;&#114;&#114;&#111;&#119;&#32;&#92;&#105;&#110;&#102;&#116;&#121;" title="Rendered by QuickLaTeX.com" height="10" width="54" style="vertical-align: -1px;">, the prior distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-db8980d040213648e37d9f23190aa457_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#40;&#119;&#59;&#118;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="53" style="vertical-align: -5px;"> degenerates to a uniform distribution, which is called Non-Informative Prior, and the maximum posterior estimation degenerates to the maximum likelihood estimation.</p>
+<p>The maximum likelihood estimation and Bayesian estimation can be regarded as different interpretations of the parameters that need to be estimated by the frequency school and the Bayesian school, respectively. When $v \rightarrow \infty$, the prior distribution $p(w;v)$ degenerates to a uniform distribution, which is called Non-Informative Prior, and the maximum posterior estimation degenerates to the maximum likelihood estimation.</p>
 
 
 
@@ -1098,7 +1100,7 @@ b
 
 
 
-<p>Taking the regression problem as an example, suppose the true distribution of the sample is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2086f8a5bec4d0a454bcbb3a2a21eac8_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#120;&#44;&#121;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="58" style="vertical-align: -5px;">, and the square loss function is used. The expected error of the model f(x) is</p>
+<p>Taking the regression problem as an example, suppose the true distribution of the sample is $p_r(x,y)$, and the square loss function is used. The expected error of the model f(x) is</p>
 
 
 
@@ -1114,7 +1116,7 @@ b
 
 
 
-<p>Where <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-162bd9702709d97d84141ab74125cece_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#121;&#92;&#109;&#105;&#100;&#32;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="64" style="vertical-align: -5px;"> is the true conditional distribution of the sample,<img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-cbba301aeee285ac76a4dca9f528d762_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#94;&#60;&#101;&#109;&#62;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="93" style="vertical-align: -5px;"> is the optimal model using square loss as the optimization objective, and its loss is </p>
+<p>Where $ p_r(y\mid x)$ is the true conditional distribution of the sample,$f^<em>(x)$ is the optimal model using square loss as the optimization objective, and its loss is </em></p>
 
 
 
@@ -1122,7 +1124,7 @@ b
 
 
 
-<p><br>Loss <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-729568734d87ffb0f88cf42b1bc6828a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#101;&#112;&#115;&#105;&#108;&#111;&#110;" title="Rendered by QuickLaTeX.com" height="8" width="7" style="vertical-align: 0px;"> is usually caused by sample distribution and noise, and cannot be reduced by optimizing the model.</p>
+<p><br>Loss $\epsilon$ is usually caused by sample distribution and noise, and cannot be reduced by optimizing the model.</p>
 
 
 
@@ -1142,11 +1144,11 @@ b
 
 
 
-<p>When actually training a model f(x), the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;"> is a finite sample set sampled independently and identically from the real distribution <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2086f8a5bec4d0a454bcbb3a2a21eac8_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#112;&#95;&#114;&#40;&#120;&#44;&#121;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="58" style="vertical-align: -5px;">. Different training sets will get different models. Let <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a54c1adf4323dd7b92fd150e5f936dba_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#95;&#68;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="44" style="vertical-align: -5px;"> denote the model learned on the training set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;">. The ability of a machine learning algorithm (including models and optimization algorithms) can be evaluated by the average performance of models on different training sets.</p>
+<p>When actually training a model f(x), the training set $\mathcal{D}$ is a finite sample set sampled independently and identically from the real distribution $p_r(x,y)$. Different training sets will get different models. Let $f_D(x)$ denote the model learned on the training set $\mathcal{D}$. The ability of a machine learning algorithm (including models and optimization algorithms) can be evaluated by the average performance of models on different training sets.</p>
 
 
 
-<p>For a single sample x, the expected difference between the model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a54c1adf4323dd7b92fd150e5f936dba_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#95;&#68;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="44" style="vertical-align: -5px;"> and the optimal model <em><img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-84c1dafaadd67ee9e308a1f94da9a2c1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#94;&#42;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;"> in different training sets <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-604919a910da61f809c93c64c0740a83_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#68;&#125;" title="Rendered by QuickLaTeX.com" height="12" width="14" style="vertical-align: 0px;"> is</em></p>
+<p>For a single sample x, the expected difference between the model $f_D(x)$ and the optimal model <em>$f^*(x)$ in different training sets $\mathcal{D}$ is</em></p>
 
 
 
@@ -1162,7 +1164,7 @@ b
 
 
 
-<p>Use <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-8609d4c51568dff72d58bbf1c56e0094_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#98;&#98;&#123;&#69;&#125;&#95;&#123;&#68;&#125;&#32;&#91;&#32;&#40;&#102;&#95;&#68;&#40;&#120;&#41;&#45;&#102;&#94;&#42;&#40;&#120;&#41;&#41;&#94;&#50;&#32;&#93;" title="Rendered by QuickLaTeX.com" height="20" width="163" style="vertical-align: -5px;"> <em>in formula instead of <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-64ee137372220833e50adfa248077cef_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#40;&#102;&#95;&#68;&#40;&#120;&#41;&#45;&#102;&#94;&#42;&#40;&#120;&#41;&#41;&#94;&#50;" title="Rendered by QuickLaTeX.com" height="20" width="129" style="vertical-align: -5px;">, the expected error can be further written as</em></p>
+<p>Use $\mathbb{E}_{D} [ (f_D(x)-f^*(x))^2 ]$ <em>in formula instead of $(f_D(x)-f^*(x))^2$, the expected error can be further written as</em></p>
 
 
 
@@ -1194,7 +1196,7 @@ b
 
 
 
-<p>Figure 4 shows the four combinations of deviations and variances of the machine learning model. The center point of each graph is the optimal model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-84c1dafaadd67ee9e308a1f94da9a2c1_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#94;&#42;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="41" style="vertical-align: -5px;">, and the blue dot is the model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-a54c1adf4323dd7b92fd150e5f936dba_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#95;&#68;&#40;&#120;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="44" style="vertical-align: -5px;"> obtained on different training sets D. Figure 4a shows an ideal situation with low variance and bias. Figure 4b shows the case of high deviation and low variance, indicating that the generalization ability of the model is very good, but the fitting ability is insufficient. Figure 4c shows the case of low deviation and high variance, indicating that the model&rsquo;s fitting ability is very good, but its generalization ability is relatively poor. When the training data is relatively small, it will lead to overfitting. Figure 4d shows the case of high deviation and high variance, which is the worst case.</p>
+<p>Figure 4 shows the four combinations of deviations and variances of the machine learning model. The center point of each graph is the optimal model $f^*(x)$, and the blue dot is the model $f_D(x)$ obtained on different training sets D. Figure 4a shows an ideal situation with low variance and bias. Figure 4b shows the case of high deviation and low variance, indicating that the generalization ability of the model is very good, but the fitting ability is insufficient. Figure 4c shows the case of low deviation and high variance, indicating that the model&rsquo;s fitting ability is very good, but its generalization ability is relatively poor. When the training data is relatively small, it will lead to overfitting. Figure 4d shows the case of high deviation and high variance, which is the worst case.</p>
 
 
 <div class="wp-block-image">
@@ -1206,7 +1208,7 @@ b
 
 
 
-<p>As the complexity of the model increases, the fitting ability of the model becomes stronger, the deviation decreases, and the variance increases, which leads to overfitting. Taking structural risk minimization as an example, we can adjust the regularization coefficient <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b5c45836864531b8e37025dabadd24a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="10" style="vertical-align: 0px;"> to control the complexity of the model. When <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b5c45836864531b8e37025dabadd24a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="10" style="vertical-align: 0px;"> becomes larger, the complexity of the model will decrease, which can effectively reduce the variance and avoid overfitting, but the deviation will increase. When <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b5c45836864531b8e37025dabadd24a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="10" style="vertical-align: 0px;"> is too large, the total expected error will increase instead. Therefore, a good regularization coefficient <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-2b5c45836864531b8e37025dabadd24a_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#108;&#97;&#109;&#98;&#100;&#97;" title="Rendered by QuickLaTeX.com" height="12" width="10" style="vertical-align: 0px;"> needs to strike a better balance between deviation and variance. Figure 5 shows the expected error, deviation, and variance of the machine learning model with complexity. The red dotted line indicates the optimal model. The optimal model is not necessarily the intersection of the deviation curve and the variance curve.</p>
+<p>As the complexity of the model increases, the fitting ability of the model becomes stronger, the deviation decreases, and the variance increases, which leads to overfitting. Taking structural risk minimization as an example, we can adjust the regularization coefficient $\lambda$ to control the complexity of the model. When $\lambda$ becomes larger, the complexity of the model will decrease, which can effectively reduce the variance and avoid overfitting, but the deviation will increase. When $\lambda$ is too large, the total expected error will increase instead. Therefore, a good regularization coefficient $\lambda$ needs to strike a better balance between deviation and variance. Figure 5 shows the expected error, deviation, and variance of the machine learning model with complexity. The red dotted line indicates the optimal model. The optimal model is not necessarily the intersection of the deviation curve and the variance curve.</p>
 
 
 <div class="wp-block-image">
@@ -1228,7 +1230,7 @@ b
 
 
 
-<p>For classification problems, common evaluation criteria include accuracy, precision, recall, and F-value. Given the test set <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-9ec1d950e9113d93ede1557ca74b5d1b_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#109;&#97;&#116;&#104;&#99;&#97;&#108;&#123;&#84;&#125;&#61;&#123;&#40;&#120;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#49;&#41;&#125;&#41;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#40;&#120;&#94;&#123;&#40;&#78;&#41;&#125;&#44;&#121;&#94;&#123;&#40;&#78;&#41;&#125;&#41;&#125;" title="Rendered by QuickLaTeX.com" height="21" width="243" style="vertical-align: -5px;">, assuming the label <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-92b513cf72244eb8e6d052122243885d_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#121;&#94;&#123;&#40;&#110;&#41;&#125;&#92;&#105;&#110;&#32;&#123;&#49;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#67;&#125;" title="Rendered by QuickLaTeX.com" height="20" width="113" style="vertical-align: -4px;">, use The learned model <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-f0c7df0765c60b18bb50d249d09e18fb_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#102;&#40;&#120;&#59;&#92;&#116;&#104;&#101;&#116;&#97;&#94;&#42;&#41;" title="Rendered by QuickLaTeX.com" height="19" width="58" style="vertical-align: -5px;"> predicts each sample in the test set, and the result is <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-25ef7bb1d9d5b2dbe1854c2e7eefbaab_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#123;&#92;&#104;&#97;&#116;&#123;&#121;&#125;&#94;&#123;&#40;&#49;&#41;&#125;&#44;&#92;&#104;&#100;&#111;&#116;&#115;&#44;&#92;&#104;&#97;&#116;&#123;&#121;&#125;&#94;&#123;&#40;&#78;&#41;&#125;&#32;&#125;" title="Rendered by QuickLaTeX.com" height="20" width="98" style="vertical-align: -4px;">. Accuracy The most commonly used evaluation index is Accuracy:</p>
+<p>For classification problems, common evaluation criteria include accuracy, precision, recall, and F-value. Given the test set $\mathcal{T}={(x^{(1)},y^{(1)}),...,(x^{(N)},y^{(N)})}$, assuming the label $y^{(n)}\in {1,...,C}$, use The learned model $f(x;\theta^*)$ predicts each sample in the test set, and the result is ${\hat{y}^{(1)},...,\hat{y}^{(N)} }$. Accuracy The most commonly used evaluation index is Accuracy:</p>
 
 
 
@@ -1284,7 +1286,7 @@ b
 
 
 
-<ul><li>True Negative (TN): The true category of a sample is other categories, and the model also predicts other categories. The number of such samples is recorded as <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0eda5b57c751fdc8162344764f13c765_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#84;&#78;&#95;&#99;" title="Rendered by QuickLaTeX.com" height="15" width="33" style="vertical-align: -3px;">. For the category c, this situation generally does not need to be concerned.</li></ul>
+<ul><li>True Negative (TN): The true category of a sample is other categories, and the model also predicts other categories. The number of such samples is recorded as $TN_c$. For the category c, this situation generally does not need to be concerned.</li></ul>
 
 
 
@@ -1324,7 +1326,7 @@ b
 
 
 
-<p>Among them, <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-b6a7605b1bcca8f1b416eaf733f34e08_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#98;&#101;&#116;&#97;" title="Rendered by QuickLaTeX.com" height="17" width="11" style="vertical-align: -4px;"> is used to balance the importance of precision and recall, and the general value is 1. The F value when <img loading="lazy" src="./../../../../wp-content/ql-cache/quicklatex.com-0c6779342ddf11b238890bc22d825cf2_l3.png" class="ql-img-inline-formula quicklatex-auto-format" alt="&#92;&#98;&#101;&#116;&#97;&#61;&#49;" title="Rendered by QuickLaTeX.com" height="17" width="43" style="vertical-align: -4px;"> is called the F1 value, which is the harmonic average of the precision rate and the recall rate.</p>
+<p>Among them, $\beta$ is used to balance the importance of precision and recall, and the general value is 1. The F value when $\beta=1$ is called the F1 value, which is the harmonic average of the precision rate and the recall rate.</p>
 
 
 
@@ -1482,6 +1484,7 @@ var wpcf7 = {"api":{"root":".\/wp-json\/","namespace":"contact-form-7\/v1"}};
 <script type="text/javascript" src="./../../../../wp-content/plugins/raratheme-companion/public/js/raratheme-companion-public.min.js?ver=1.4.0" id="raratheme-companion-js"></script>
 <script type="text/javascript" src="./../../../../wp-content/plugins/raratheme-companion/public/js/fontawesome/all.min.js?ver=6.1.1" id="all-js"></script>
 <script type="text/javascript" src="./../../../../wp-content/plugins/raratheme-companion/public/js/fontawesome/v4-shims.min.js?ver=6.1.1" id="v4-shims-js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js?ver=6.0.1" id="mathjax-js"></script>
 <script type="text/javascript" id="neve-script-js-extra">
 /* <![CDATA[ */
 var NeveProperties = {"ajaxurl":".\/wp-admin\/admin-ajax.php","nonce":"8e93137290","isRTL":"","isCustomize":""};
